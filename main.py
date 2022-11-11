@@ -13,8 +13,6 @@ def change_speed(speed:int):
             if "DownloadThrottleKbps" in lines[i]:
                 lines[i] = "\t\t\"DownloadThrottleKbps\"\t\t\"" + speed + "\"\r"
 
-
-
     with open("C:\\Program Files (x86)\\Steam\\config\\config.vdf", "w") as f:
         f.writelines(lines)
 
@@ -24,8 +22,6 @@ def change_speed(speed:int):
         for i in range(len(lines)):
             if "DownloadThrottleKbps" in lines[i]:
                 print(lines[i])
-
-
 
 
 # check if steam is running and exit the program before setting the speed
