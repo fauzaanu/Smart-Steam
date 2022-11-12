@@ -60,9 +60,30 @@ def convert_to_kbps(speed):
     # THROTTLE_SPEED and FULL_SPEED are in kbps while steam config uses kilobits 
     # we should convert the speed to kilobits
     return speed * 8
-    
 
+def the_main(t,f,throttle=True):
+    """
+    the main function for the kivy app
+    """
+    THROTTLE_SPEED = t
+    FULL_SPEED = f
 
+    if throttle:
+        if steam_is_running():
+            kill_steam()
+            change_speed(THROTTLE_SPEED)
+            # re-open steam
+            os.system("start steam://open/main")
+        else:
+            change_speed(THROTTLE_SPEED)
+    else:
+        if steam_is_running():
+            kill_steam()
+            change_speed(FULL_SPEED)
+            # re-open steam
+            os.system("start steam://open/main")
+        else:
+            change_speed(FULL_SPEED)
 
 
 # run the main function
@@ -74,7 +95,7 @@ if __name__ == "__main__":
         # re-open steam
         os.system("start steam://open/main")
     else:
-        change_speed(1)
+        change_speed(FULL_SPEED)
 
 
 

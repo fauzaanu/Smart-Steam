@@ -1,0 +1,68 @@
+# from kivy.core.window import Window
+
+MDBoxLayout:
+    orientation: 'vertical'
+    padding: dp(10)
+    spacing: dp(10)
+    spacing: dp(35)
+    adaptive_height: False
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDTextField:
+        line_color_normal: "red"
+        line_color_focus: "white"
+        hint_text_color_normal: "gray"
+        text_color_focus: "white"
+        text_color_normal: "gray"
+        helper_text_color_focus: "white"
+        helper_text_color_normal: "gray"
+        hint_text_color_normal: "gray"
+        hint_text_color_focus: "white"
+
+        id: throttle_input
+        hint_text: "Enter Throttle Speed"
+        helper_text: "Enter a Number in (KBPS)"
+        mode: "rectangle"
+        on_focus: app.show_error()
+
+
+
+
+    MDTextField:
+        line_color_normal: "green"
+        line_color_focus: "white"
+        hint_text_color_normal: "gray"
+        text_color_focus: "white"
+        text_color_normal: "gray"
+        helper_text_color_focus: "white"
+        helper_text_color_normal: "gray"
+        hint_text_color_normal: "gray"
+        hint_text_color_focus: "white"
+
+        id: full_speed_input
+        hint_text: "Enter Full Speed"
+        helper_text: "Enter a Number in (KBPS)"
+        mode: "rectangle"
+        on_focus: app.show_error()
+
+    MDRaisedButton:
+        id: action_button
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5}
+
+        text: "Throttle"
+        md_bg_color: "white"
+        text_color: app.theme_cls.primary_color
+        on_press: app.throttle_steam()
+
+
+
+
+    MDLabel:
+        id: status_label
+        text: "Status: Steam download speeds are throttled"
+        text_size: dp(6), dp(4)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+
+
